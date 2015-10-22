@@ -5,7 +5,6 @@ void setup()
 	//your code here
 	size(400,400);
 	background(0);
-	//frameRate(6);
 	noStroke();
 	bobsters = new Particle[52];
 	for (int bobI = 0; bobI < bobsters.length; bobI++)
@@ -53,7 +52,24 @@ class NormalParticle implements Particle
   {
  	x = x + (Math.cos((float)angle)* speed);
  	y = y + (Math.sin((float)angle)* speed);
+ 	if((x > 450)||
+ 		  (x < -50)||
+ 		  (y < -50)||
+ 		  (y > 450))
+ 		  {
+ 		  	uniqueMove();
+ 		  }
   }
+  public void uniqueMove()
+	{
+		x = 200;
+		y = 200;
+		fillR = (int)(Math.random()* 256);
+ 		fillG = (int)(Math.random()* 256);
+ 		fillB = (int)(Math.random()* 256);
+		x = x + (Math.cos((float)angle)* speed);
+ 		y = x + (Math.sin((float)angle)* speed);
+	}
 
   public void show()
   {
@@ -72,15 +88,52 @@ class OddballParticle implements Particle//uses an interface
 	//your code here
 	double x, y, speed, angle;
 	int fillR, fillG, fillB;
-	void show()
+	OddballParticle()
+	{
+		fillR = (int)(Math.random()* 256);
+ 		fillG = (int)(Math.random()* 256);
+ 		fillB = (int)(Math.random()* 256);
+ 		speed = 3;
+ 		x  = 200;
+ 		y = 200;
+ 		angle = Math.random() * 361;
+	}
+	public void show()
 	{
 		fill(fillR,fillG,fillB);
 		ellipse((float)x,(float)y,15,15);
 	}
-	void move()
+	public void move()
 	{
 		x = x + 5 + (Math.cos((float)angle)* speed);
  		y = y + 5 + (Math.sin((float)angle)* speed);
+ 		if((x < 400)&&
+ 		  (x > 0)&&
+ 		  (y > 0)&&
+ 		  (y < 400))
+ 		{
+ 			angle += (Math.random() * 1);
+ 		}
+ 		angle = Math.random() * 361;
+ 		if((x > 450)||
+ 		  (x < -50)||
+ 		  (y < -50)||
+ 		  (y > 450))
+ 		  {
+ 		  	uniqueMove();
+ 		  }
+	}
+	public void uniqueMove()
+	{
+		x = 200;
+		y = 200;
+		fillR = (int)(Math.random()* 256);
+ 		fillG = (int)(Math.random()* 256);
+ 		fillB = (int)(Math.random()* 256);
+ 		angle = Math.random() * 361;
+ 		x = x + 5 + (Math.cos((float)angle)* speed);
+ 		y = y + 5 + (Math.sin((float)angle)* speed);
+ 		
 	}
 }
 class JumboParticle implements Particle//uses inheritance
@@ -99,14 +152,32 @@ class JumboParticle implements Particle//uses inheritance
  		y = 200;
  		angle = Math.random() * 361;
 	}
-	void show()
+	public void show()
 	{
 		fill(fillR, fillG, fillB);
 		ellipse((float)x,(float)y,45,45);
 	}
-	void move()
+	public void move()
 	{
 		x = x + (Math.cos((float)angle)* speed);
  		y = y + (Math.sin((float)angle)* speed);
+ 		if((x > 450)||
+ 		  (x < -50)||
+ 		  (y < -50)||
+ 		  (y > 450))
+ 		  {
+ 		  	uniqueMove();
+ 		  }
+	}
+	public void uniqueMove()
+	{
+		x = 200;
+		y = 200;
+		fillR = (int)(Math.random()* 256);
+ 		fillG = (int)(Math.random()* 256);
+ 		fillB = (int)(Math.random()* 256);
+		angle = Math.random() * 361;
+		x = x  + (Math.cos((float)angle)* speed);
+ 		y = y  + (Math.sin((float)angle)* speed);
 	}
 }
