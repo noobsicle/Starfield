@@ -87,7 +87,7 @@ class OddballParticle implements Particle//uses an interface
 {
 	//your code here
 	double x, y, speed, angle;
-	int fillR, fillG, fillB;
+	int fillR, fillG, fillB, angChange;
 	OddballParticle()
 	{
 		fillR = (int)(Math.random()* 256);
@@ -97,6 +97,7 @@ class OddballParticle implements Particle//uses an interface
  		x  = 200;
  		y = 200;
  		angle = Math.random() * 361;
+ 		angChange = (int)(Math.random() * 2);
 	}
 	public void show()
 	{
@@ -107,14 +108,25 @@ class OddballParticle implements Particle//uses an interface
 	{
 		x = x + 5 + (Math.cos((float)angle)* speed);
  		y = y + 5 + (Math.sin((float)angle)* speed);
+
  		if((x < 400)&&
  		  (x > 0)&&
  		  (y > 0)&&
  		  (y < 400))
  		{
- 			angle += (Math.random() * 1);
+ 			if (angChange == 0)
+ 			{
+ 				angle += (Math.random() * 1);
+ 				angChange = (int)(Math.random() * 2);
+ 			}
+ 			if (angChange == 1)
+ 			{
+ 				angle += (Math.random() * 1);
+ 				angChange = (int)(Math.random() * 2);
+ 			}
+ 			
  		}
- 		angle = Math.random() * 361;
+ 		
  		if((x > 450)||
  		  (x < -50)||
  		  (y < -50)||
