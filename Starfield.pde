@@ -118,7 +118,7 @@ class OddballParticle implements Particle//uses an interface
  			{
  				angle += (Math.random() * 1);
  				angChange = (int)(Math.random() * 2);	
- 			else if (angChange == 1)
+ 			if else (angChange == 1)
  			{
  				angle -= (Math.random() * 1);
  				angChange = (int)(Math.random() * 2);
